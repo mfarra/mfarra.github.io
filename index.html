@@ -1,0 +1,1033 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Official Runner's Cumulative Time and Pace Calculator</title>
+<style type="text/css">
+table#timeTable {
+	margin-top: 10px;
+}
+table#timeTable th {
+	background-color: #e0e0e0;
+	font: bold 11px verdana, sans-serif;
+}
+table#timeTable td {
+	font: 11px verdana, sans-serif;
+}
+table#timeTable input {
+	font: 11px verdana, sans-serif;
+}
+table#timeTable tr:hover {
+	background-color: #ffcccc;
+}
+input.mileageInput, input.hourInput, input.minuteInput, input.secondInput, input.xxInput {
+	text-align: right;
+	border: #cccccc solid 1px;
+	width: 40px;
+	padding: 1px;
+}
+input.lap, input.paceOutput, input.speedOutput, div.outputBox, div.outputBoxShort {
+	text-align: right;
+	border: #cccccc solid 1px;
+	width: 100px;
+	padding: 2px;
+	background-color: #eeeeee;
+	color: #000000;
+}
+
+div.outputBoxShort {
+	width: 30px;
+}
+
+input.lap {
+	width: 30px;
+}
+</style>
+<table>
+<tbody><tr valign="top">
+<td>
+
+<form name="timeForm">
+<table id="timeTable">
+<tbody><tr><th rowspan="3">Lap</th><th colspan="5">Input</th><th colspan="6">Output</th><th rowspan="3">Calculate</th></tr>
+<tr><th rowspan="2">Dist</th><th rowspan="2">HH</th><th rowspan="2">MM</th><th rowspan="2">SS</th><th rowspan="2">.ss</th><th colspan="2">Instantaneous</th><th colspan="4">Cumulative</th></tr>
+<tr><th>Pace</th><th>Speed<br> /hr</th><th>Distance</th><th>Time</th><th>Pace</th><th>Speed<br> /hr</th></tr>
+
+<tr>
+<td><div class="outputBoxShort">1</div></td>
+<td><input id="dist1" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh1" type="text" class="hourInput" value=""></td>
+<td><input id="mm1" type="text" class="minuteInput" value=""></td>
+<td><input id="ss1" type="text" class="secondInput" value=""></td>
+<td><input id="xx1" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace1" class="outputBox">&nbsp;</div></td>
+<td><div id="speed1" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist1" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime1" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds1"></td>
+<td><div id="cumPace1" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed1" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate1" value="Calculate" onclick="calculate(1)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">2</div></td>
+<td><input id="dist2" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh2" type="text" class="hourInput" value=""></td>
+<td><input id="mm2" type="text" class="minuteInput" value=""></td>
+<td><input id="ss2" type="text" class="secondInput" value=""></td>
+<td><input id="xx2" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace2" class="outputBox">&nbsp;</div></td>
+<td><div id="speed2" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist2" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime2" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds2"></td>
+<td><div id="cumPace2" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed2" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate2" value="Calculate" onclick="calculate(2)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">3</div></td>
+<td><input id="dist3" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh3" type="text" class="hourInput" value=""></td>
+<td><input id="mm3" type="text" class="minuteInput" value=""></td>
+<td><input id="ss3" type="text" class="secondInput" value=""></td>
+<td><input id="xx3" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace3" class="outputBox">&nbsp;</div></td>
+<td><div id="speed3" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist3" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime3" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds3"></td>
+<td><div id="cumPace3" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed3" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate3" value="Calculate" onclick="calculate(3)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">4</div></td>
+<td><input id="dist4" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh4" type="text" class="hourInput" value=""></td>
+<td><input id="mm4" type="text" class="minuteInput" value=""></td>
+<td><input id="ss4" type="text" class="secondInput" value=""></td>
+<td><input id="xx4" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace4" class="outputBox">&nbsp;</div></td>
+<td><div id="speed4" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist4" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime4" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds4"></td>
+<td><div id="cumPace4" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed4" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate4" value="Calculate" onclick="calculate(4)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">5</div></td>
+<td><input id="dist5" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh5" type="text" class="hourInput" value=""></td>
+<td><input id="mm5" type="text" class="minuteInput" value=""></td>
+<td><input id="ss5" type="text" class="secondInput" value=""></td>
+<td><input id="xx5" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace5" class="outputBox">&nbsp;</div></td>
+<td><div id="speed5" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist5" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime5" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds5"></td>
+<td><div id="cumPace5" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed5" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate5" value="Calculate" onclick="calculate(5)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">6</div></td>
+<td><input id="dist6" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh6" type="text" class="hourInput" value=""></td>
+<td><input id="mm6" type="text" class="minuteInput" value=""></td>
+<td><input id="ss6" type="text" class="secondInput" value=""></td>
+<td><input id="xx6" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace6" class="outputBox">&nbsp;</div></td>
+<td><div id="speed6" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist6" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime6" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds6"></td>
+<td><div id="cumPace6" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed6" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate6" value="Calculate" onclick="calculate(6)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">7</div></td>
+<td><input id="dist7" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh7" type="text" class="hourInput" value=""></td>
+<td><input id="mm7" type="text" class="minuteInput" value=""></td>
+<td><input id="ss7" type="text" class="secondInput" value=""></td>
+<td><input id="xx7" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace7" class="outputBox">&nbsp;</div></td>
+<td><div id="speed7" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist7" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime7" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds7"></td>
+<td><div id="cumPace7" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed7" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate7" value="Calculate" onclick="calculate(7)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">8</div></td>
+<td><input id="dist8" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh8" type="text" class="hourInput" value=""></td>
+<td><input id="mm8" type="text" class="minuteInput" value=""></td>
+<td><input id="ss8" type="text" class="secondInput" value=""></td>
+<td><input id="xx8" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace8" class="outputBox">&nbsp;</div></td>
+<td><div id="speed8" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist8" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime8" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds8"></td>
+<td><div id="cumPace8" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed8" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate8" value="Calculate" onclick="calculate(8)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">9</div></td>
+<td><input id="dist9" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh9" type="text" class="hourInput" value=""></td>
+<td><input id="mm9" type="text" class="minuteInput" value=""></td>
+<td><input id="ss9" type="text" class="secondInput" value=""></td>
+<td><input id="xx9" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace9" class="outputBox">&nbsp;</div></td>
+<td><div id="speed9" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist9" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime9" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds9"></td>
+<td><div id="cumPace9" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed9" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate9" value="Calculate" onclick="calculate(9)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">10</div></td>
+<td><input id="dist10" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh10" type="text" class="hourInput" value=""></td>
+<td><input id="mm10" type="text" class="minuteInput" value=""></td>
+<td><input id="ss10" type="text" class="secondInput" value=""></td>
+<td><input id="xx10" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace10" class="outputBox">&nbsp;</div></td>
+<td><div id="speed10" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist10" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime10" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds10"></td>
+<td><div id="cumPace10" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed10" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate10" value="Calculate" onclick="calculate(10)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">11</div></td>
+<td><input id="dist11" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh11" type="text" class="hourInput" value=""></td>
+<td><input id="mm11" type="text" class="minuteInput" value=""></td>
+<td><input id="ss11" type="text" class="secondInput" value=""></td>
+<td><input id="xx11" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace11" class="outputBox">&nbsp;</div></td>
+<td><div id="speed11" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist11" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime11" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds11"></td>
+<td><div id="cumPace11" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed11" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate11" value="Calculate" onclick="calculate(11)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">12</div></td>
+<td><input id="dist12" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh12" type="text" class="hourInput" value=""></td>
+<td><input id="mm12" type="text" class="minuteInput" value=""></td>
+<td><input id="ss12" type="text" class="secondInput" value=""></td>
+<td><input id="xx12" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace12" class="outputBox">&nbsp;</div></td>
+<td><div id="speed12" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist12" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime12" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds12"></td>
+<td><div id="cumPace12" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed12" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate12" value="Calculate" onclick="calculate(12)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">13</div></td>
+<td><input id="dist13" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh13" type="text" class="hourInput" value=""></td>
+<td><input id="mm13" type="text" class="minuteInput" value=""></td>
+<td><input id="ss13" type="text" class="secondInput" value=""></td>
+<td><input id="xx13" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace13" class="outputBox">&nbsp;</div></td>
+<td><div id="speed13" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist13" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime13" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds13"></td>
+<td><div id="cumPace13" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed13" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate13" value="Calculate" onclick="calculate(13)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">14</div></td>
+<td><input id="dist14" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh14" type="text" class="hourInput" value=""></td>
+<td><input id="mm14" type="text" class="minuteInput" value=""></td>
+<td><input id="ss14" type="text" class="secondInput" value=""></td>
+<td><input id="xx14" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace14" class="outputBox">&nbsp;</div></td>
+<td><div id="speed14" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist14" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime14" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds14"></td>
+<td><div id="cumPace14" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed14" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate14" value="Calculate" onclick="calculate(14)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">15</div></td>
+<td><input id="dist15" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh15" type="text" class="hourInput" value=""></td>
+<td><input id="mm15" type="text" class="minuteInput" value=""></td>
+<td><input id="ss15" type="text" class="secondInput" value=""></td>
+<td><input id="xx15" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace15" class="outputBox">&nbsp;</div></td>
+<td><div id="speed15" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist15" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime15" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds15"></td>
+<td><div id="cumPace15" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed15" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate15" value="Calculate" onclick="calculate(15)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">16</div></td>
+<td><input id="dist16" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh16" type="text" class="hourInput" value=""></td>
+<td><input id="mm16" type="text" class="minuteInput" value=""></td>
+<td><input id="ss16" type="text" class="secondInput" value=""></td>
+<td><input id="xx16" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace16" class="outputBox">&nbsp;</div></td>
+<td><div id="speed16" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist16" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime16" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds16"></td>
+<td><div id="cumPace16" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed16" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate16" value="Calculate" onclick="calculate(16)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">17</div></td>
+<td><input id="dist17" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh17" type="text" class="hourInput" value=""></td>
+<td><input id="mm17" type="text" class="minuteInput" value=""></td>
+<td><input id="ss17" type="text" class="secondInput" value=""></td>
+<td><input id="xx17" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace17" class="outputBox">&nbsp;</div></td>
+<td><div id="speed17" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist17" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime17" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds17"></td>
+<td><div id="cumPace17" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed17" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate17" value="Calculate" onclick="calculate(17)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">18</div></td>
+<td><input id="dist18" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh18" type="text" class="hourInput" value=""></td>
+<td><input id="mm18" type="text" class="minuteInput" value=""></td>
+<td><input id="ss18" type="text" class="secondInput" value=""></td>
+<td><input id="xx18" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace18" class="outputBox">&nbsp;</div></td>
+<td><div id="speed18" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist18" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime18" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds18"></td>
+<td><div id="cumPace18" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed18" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate18" value="Calculate" onclick="calculate(18)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">19</div></td>
+<td><input id="dist19" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh19" type="text" class="hourInput" value=""></td>
+<td><input id="mm19" type="text" class="minuteInput" value=""></td>
+<td><input id="ss19" type="text" class="secondInput" value=""></td>
+<td><input id="xx19" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace19" class="outputBox">&nbsp;</div></td>
+<td><div id="speed19" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist19" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime19" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds19"></td>
+<td><div id="cumPace19" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed19" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate19" value="Calculate" onclick="calculate(19)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">20</div></td>
+<td><input id="dist20" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh20" type="text" class="hourInput" value=""></td>
+<td><input id="mm20" type="text" class="minuteInput" value=""></td>
+<td><input id="ss20" type="text" class="secondInput" value=""></td>
+<td><input id="xx20" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace20" class="outputBox">&nbsp;</div></td>
+<td><div id="speed20" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist20" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime20" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds20"></td>
+<td><div id="cumPace20" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed20" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate20" value="Calculate" onclick="calculate(20)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">21</div></td>
+<td><input id="dist21" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh21" type="text" class="hourInput" value=""></td>
+<td><input id="mm21" type="text" class="minuteInput" value=""></td>
+<td><input id="ss21" type="text" class="secondInput" value=""></td>
+<td><input id="xx21" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace21" class="outputBox">&nbsp;</div></td>
+<td><div id="speed21" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist21" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime21" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds21"></td>
+<td><div id="cumPace21" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed21" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate21" value="Calculate" onclick="calculate(21)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">22</div></td>
+<td><input id="dist22" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh22" type="text" class="hourInput" value=""></td>
+<td><input id="mm22" type="text" class="minuteInput" value=""></td>
+<td><input id="ss22" type="text" class="secondInput" value=""></td>
+<td><input id="xx22" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace22" class="outputBox">&nbsp;</div></td>
+<td><div id="speed22" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist22" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime22" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds22"></td>
+<td><div id="cumPace22" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed22" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate22" value="Calculate" onclick="calculate(22)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">23</div></td>
+<td><input id="dist23" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh23" type="text" class="hourInput" value=""></td>
+<td><input id="mm23" type="text" class="minuteInput" value=""></td>
+<td><input id="ss23" type="text" class="secondInput" value=""></td>
+<td><input id="xx23" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace23" class="outputBox">&nbsp;</div></td>
+<td><div id="speed23" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist23" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime23" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds23"></td>
+<td><div id="cumPace23" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed23" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate23" value="Calculate" onclick="calculate(23)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">24</div></td>
+<td><input id="dist24" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh24" type="text" class="hourInput" value=""></td>
+<td><input id="mm24" type="text" class="minuteInput" value=""></td>
+<td><input id="ss24" type="text" class="secondInput" value=""></td>
+<td><input id="xx24" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace24" class="outputBox">&nbsp;</div></td>
+<td><div id="speed24" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist24" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime24" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds24"></td>
+<td><div id="cumPace24" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed24" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate24" value="Calculate" onclick="calculate(24)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">25</div></td>
+<td><input id="dist25" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh25" type="text" class="hourInput" value=""></td>
+<td><input id="mm25" type="text" class="minuteInput" value=""></td>
+<td><input id="ss25" type="text" class="secondInput" value=""></td>
+<td><input id="xx25" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace25" class="outputBox">&nbsp;</div></td>
+<td><div id="speed25" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist25" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime25" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds25"></td>
+<td><div id="cumPace25" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed25" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate25" value="Calculate" onclick="calculate(25)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">26</div></td>
+<td><input id="dist26" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh26" type="text" class="hourInput" value=""></td>
+<td><input id="mm26" type="text" class="minuteInput" value=""></td>
+<td><input id="ss26" type="text" class="secondInput" value=""></td>
+<td><input id="xx26" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace26" class="outputBox">&nbsp;</div></td>
+<td><div id="speed26" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist26" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime26" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds26"></td>
+<td><div id="cumPace26" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed26" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate26" value="Calculate" onclick="calculate(26)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">27</div></td>
+<td><input id="dist27" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh27" type="text" class="hourInput" value=""></td>
+<td><input id="mm27" type="text" class="minuteInput" value=""></td>
+<td><input id="ss27" type="text" class="secondInput" value=""></td>
+<td><input id="xx27" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace27" class="outputBox">&nbsp;</div></td>
+<td><div id="speed27" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist27" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime27" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds27"></td>
+<td><div id="cumPace27" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed27" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate27" value="Calculate" onclick="calculate(27)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">28</div></td>
+<td><input id="dist28" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh28" type="text" class="hourInput" value=""></td>
+<td><input id="mm28" type="text" class="minuteInput" value=""></td>
+<td><input id="ss28" type="text" class="secondInput" value=""></td>
+<td><input id="xx28" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace28" class="outputBox">&nbsp;</div></td>
+<td><div id="speed28" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist28" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime28" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds28"></td>
+<td><div id="cumPace28" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed28" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate28" value="Calculate" onclick="calculate(28)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">29</div></td>
+<td><input id="dist29" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh29" type="text" class="hourInput" value=""></td>
+<td><input id="mm29" type="text" class="minuteInput" value=""></td>
+<td><input id="ss29" type="text" class="secondInput" value=""></td>
+<td><input id="xx29" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace29" class="outputBox">&nbsp;</div></td>
+<td><div id="speed29" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist29" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime29" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds29"></td>
+<td><div id="cumPace29" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed29" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate29" value="Calculate" onclick="calculate(29)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">30</div></td>
+<td><input id="dist30" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh30" type="text" class="hourInput" value=""></td>
+<td><input id="mm30" type="text" class="minuteInput" value=""></td>
+<td><input id="ss30" type="text" class="secondInput" value=""></td>
+<td><input id="xx30" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace30" class="outputBox">&nbsp;</div></td>
+<td><div id="speed30" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist30" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime30" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds30"></td>
+<td><div id="cumPace30" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed30" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate30" value="Calculate" onclick="calculate(30)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">31</div></td>
+<td><input id="dist31" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh31" type="text" class="hourInput" value=""></td>
+<td><input id="mm31" type="text" class="minuteInput" value=""></td>
+<td><input id="ss31" type="text" class="secondInput" value=""></td>
+<td><input id="xx31" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace31" class="outputBox">&nbsp;</div></td>
+<td><div id="speed31" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist31" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime31" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds31"></td>
+<td><div id="cumPace31" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed31" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate31" value="Calculate" onclick="calculate(31)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">32</div></td>
+<td><input id="dist32" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh32" type="text" class="hourInput" value=""></td>
+<td><input id="mm32" type="text" class="minuteInput" value=""></td>
+<td><input id="ss32" type="text" class="secondInput" value=""></td>
+<td><input id="xx32" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace32" class="outputBox">&nbsp;</div></td>
+<td><div id="speed32" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist32" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime32" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds32"></td>
+<td><div id="cumPace32" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed32" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate32" value="Calculate" onclick="calculate(32)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">33</div></td>
+<td><input id="dist33" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh33" type="text" class="hourInput" value=""></td>
+<td><input id="mm33" type="text" class="minuteInput" value=""></td>
+<td><input id="ss33" type="text" class="secondInput" value=""></td>
+<td><input id="xx33" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace33" class="outputBox">&nbsp;</div></td>
+<td><div id="speed33" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist33" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime33" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds33"></td>
+<td><div id="cumPace33" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed33" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate33" value="Calculate" onclick="calculate(33)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">34</div></td>
+<td><input id="dist34" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh34" type="text" class="hourInput" value=""></td>
+<td><input id="mm34" type="text" class="minuteInput" value=""></td>
+<td><input id="ss34" type="text" class="secondInput" value=""></td>
+<td><input id="xx34" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace34" class="outputBox">&nbsp;</div></td>
+<td><div id="speed34" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist34" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime34" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds34"></td>
+<td><div id="cumPace34" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed34" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate34" value="Calculate" onclick="calculate(34)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">35</div></td>
+<td><input id="dist35" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh35" type="text" class="hourInput" value=""></td>
+<td><input id="mm35" type="text" class="minuteInput" value=""></td>
+<td><input id="ss35" type="text" class="secondInput" value=""></td>
+<td><input id="xx35" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace35" class="outputBox">&nbsp;</div></td>
+<td><div id="speed35" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist35" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime35" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds35"></td>
+<td><div id="cumPace35" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed35" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate35" value="Calculate" onclick="calculate(35)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">36</div></td>
+<td><input id="dist36" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh36" type="text" class="hourInput" value=""></td>
+<td><input id="mm36" type="text" class="minuteInput" value=""></td>
+<td><input id="ss36" type="text" class="secondInput" value=""></td>
+<td><input id="xx36" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace36" class="outputBox">&nbsp;</div></td>
+<td><div id="speed36" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist36" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime36" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds36"></td>
+<td><div id="cumPace36" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed36" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate36" value="Calculate" onclick="calculate(36)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">37</div></td>
+<td><input id="dist37" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh37" type="text" class="hourInput" value=""></td>
+<td><input id="mm37" type="text" class="minuteInput" value=""></td>
+<td><input id="ss37" type="text" class="secondInput" value=""></td>
+<td><input id="xx37" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace37" class="outputBox">&nbsp;</div></td>
+<td><div id="speed37" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist37" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime37" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds37"></td>
+<td><div id="cumPace37" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed37" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate37" value="Calculate" onclick="calculate(37)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">38</div></td>
+<td><input id="dist38" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh38" type="text" class="hourInput" value=""></td>
+<td><input id="mm38" type="text" class="minuteInput" value=""></td>
+<td><input id="ss38" type="text" class="secondInput" value=""></td>
+<td><input id="xx38" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace38" class="outputBox">&nbsp;</div></td>
+<td><div id="speed38" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist38" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime38" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds38"></td>
+<td><div id="cumPace38" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed38" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate38" value="Calculate" onclick="calculate(38)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">39</div></td>
+<td><input id="dist39" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh39" type="text" class="hourInput" value=""></td>
+<td><input id="mm39" type="text" class="minuteInput" value=""></td>
+<td><input id="ss39" type="text" class="secondInput" value=""></td>
+<td><input id="xx39" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace39" class="outputBox">&nbsp;</div></td>
+<td><div id="speed39" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist39" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime39" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds39"></td>
+<td><div id="cumPace39" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed39" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate39" value="Calculate" onclick="calculate(39)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">40</div></td>
+<td><input id="dist40" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh40" type="text" class="hourInput" value=""></td>
+<td><input id="mm40" type="text" class="minuteInput" value=""></td>
+<td><input id="ss40" type="text" class="secondInput" value=""></td>
+<td><input id="xx40" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace40" class="outputBox">&nbsp;</div></td>
+<td><div id="speed40" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist40" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime40" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds40"></td>
+<td><div id="cumPace40" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed40" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate40" value="Calculate" onclick="calculate(40)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">41</div></td>
+<td><input id="dist41" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh41" type="text" class="hourInput" value=""></td>
+<td><input id="mm41" type="text" class="minuteInput" value=""></td>
+<td><input id="ss41" type="text" class="secondInput" value=""></td>
+<td><input id="xx41" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace41" class="outputBox">&nbsp;</div></td>
+<td><div id="speed41" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist41" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime41" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds41"></td>
+<td><div id="cumPace41" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed41" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate41" value="Calculate" onclick="calculate(41)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">42</div></td>
+<td><input id="dist42" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh42" type="text" class="hourInput" value=""></td>
+<td><input id="mm42" type="text" class="minuteInput" value=""></td>
+<td><input id="ss42" type="text" class="secondInput" value=""></td>
+<td><input id="xx42" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace42" class="outputBox">&nbsp;</div></td>
+<td><div id="speed42" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist42" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime42" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds42"></td>
+<td><div id="cumPace42" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed42" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate42" value="Calculate" onclick="calculate(42)"></td>
+</tr>
+
+
+
+<tr>
+<td><div class="outputBoxShort">43</div></td>
+<td><input id="dist43" type="text" class="mileageInput" value="1"></td>
+<td><input id="hh43" type="text" class="hourInput" value=""></td>
+<td><input id="mm43" type="text" class="minuteInput" value=""></td>
+<td><input id="ss43" type="text" class="secondInput" value=""></td>
+<td><input id="xx43" type="text" class="xxInput" value=""></td>
+
+<td><div id="pace43" class="outputBox">&nbsp;</div></td>
+<td><div id="speed43" class="outputBox">&nbsp;</div></td>
+<td><div id="cumDist43" class="outputBox">&nbsp;</div></td>
+<td><div id="cumTime43" class="outputBox">&nbsp;</div><input type="hidden" id="cumSeconds43"></td>
+<td><div id="cumPace43" class="outputBox">&nbsp;</div></td>
+<td><div id="cumSpeed43" class="outputBox">&nbsp;</div></td>
+
+<td><input type="button" id="calculate43" value="Calculate" onclick="calculate(43)"></td>
+</tr>
+
+
+
+</tbody></table>
+</form>
+
+</td><td style="padding-top: 35px;">
+
+</td></tr>
+</tbody></table>
+
+<script type="text/javascript">
+
+function clearOutput() {
+    // clear all output fields
+    for (var i = 1; i<=43; i++) {
+        document.getElementById('pace' + i).innerHTML = '&nbsp;';
+        document.getElementById('speed' + i).innerHTML = '&nbsp;';
+        document.getElementById('cumDist' + i).innerHTML = '&nbsp;';
+        document.getElementById('cumTime' + i).innerHTML = '&nbsp;';
+        document.getElementById('cumPace' + i).innerHTML = '&nbsp;';
+        document.getElementById('cumSpeed' + i).innerHTML = '&nbsp;';
+    }
+
+}
+
+function calculate(row) {
+
+	clearOutput();
+
+	// update cumulative distance
+
+	var previousDistance;
+	var thisDistance;
+	var interimDistance;
+	var cumulativeDistance;
+	var thisHours;
+	var thisMinutes;
+	var thisSeconds;
+	var thisFractions;
+	var totalSeconds;
+	var cumulativeTime;
+	var previousSeconds
+	var cumulativeSeconds;
+
+	for (var i = 1; i<=row; i++) {
+
+		if (i == 1) {
+			previousDistance = 0;
+			previousSeconds = 0;
+		} else {
+			previousDistance = document.getElementById('cumDist' + (i-1)).innerHTML;
+			previousSeconds = document.getElementById('cumSeconds' + (i-1)).value;
+		}
+
+		thisDistance = document.getElementById('dist' + i).value * 1;
+
+		thisHours = document.getElementById('hh' + i).value * 1;
+		thisMinutes = document.getElementById('mm' + i).value * 1;
+		thisSeconds = document.getElementById('ss' + i).value * 1;
+		thisFractions = document.getElementById('xx' + i).value * 1;
+
+		totalSeconds = thisHours * 3600 + thisMinutes * 60 + thisSeconds + thisFractions / 100
+
+		document.getElementById('pace' + i).innerHTML = secondsToTime(totalSeconds/thisDistance);
+		document.getElementById('speed' + i).innerHTML = formatNumber(thisDistance/totalSeconds * 3600, 2);
+
+		cumulativeSeconds = previousSeconds * 1 + totalSeconds * 1;
+		document.getElementById('cumSeconds' + i).value = cumulativeSeconds;
+
+		cumulativeTime = secondsToTime(cumulativeSeconds);
+		document.getElementById('cumTime' + i).innerHTML = cumulativeTime;
+
+		cumulativeDistance = previousDistance * 1 + thisDistance * 1;
+		document.getElementById('cumDist' + i).innerHTML = cumulativeDistance;
+
+		document.getElementById('cumPace' + i).innerHTML = secondsToTime(cumulativeSeconds/cumulativeDistance);
+		document.getElementById('cumSpeed' + i).innerHTML = formatNumber(cumulativeDistance/cumulativeSeconds * 3600, 2);
+	}
+
+}
+
+function secondsToTime(secs) {
+
+	var ret = "";                 // Return value
+	var s = Math.floor(secs); 	  // Whole seconds
+	var m = Math.floor(s/60);     // Whole minutes
+	var h = Math.floor(m/60);     // Whole hours
+
+	if (h < 10)
+	 ret += "0";
+	ret += h;
+
+	ret += ":";
+
+	var m = m%60;
+
+	if (m < 10)
+	 ret += "0";
+	ret += m;
+
+	var s = s%60;
+
+	ret += ":";
+
+	if (s < 10)
+	 ret += "0";
+	ret += s;
+
+	return ret;
+
+}
+
+function formatNumber(expr, decimals) {
+	var str = "" + Math.round( eval(expr) * Math.pow(10,decimals))
+	while (str.length <= decimals) { str = "0" + str }
+	var decpoint = str.length - decimals;
+	var result = str.substring(0,decpoint);
+	if (decimals) result += "." + str.substring(decpoint,str.length);
+	return result;
+}
+
+</script>
+</body></html>
